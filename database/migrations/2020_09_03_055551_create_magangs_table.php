@@ -25,7 +25,7 @@ class CreateMagangsTable extends Migration
             $table->date('tanggal_selesai');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('location_magang_id')->references('id')->on('locations_magangs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('location_magang_id')->references('id')->on('location_magangs')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
