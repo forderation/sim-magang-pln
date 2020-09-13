@@ -13,15 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('loggedin')->group(function() {
-    Route::get('login', 'AuthController@loginView')->name('login-view');
-    Route::post('login', 'AuthController@login')->name('login');
-    Route::get('register', 'AuthController@registerView')->name('register-view');
-    Route::post('register', 'AuthController@register')->name('register');
-});
+Route::namespace('Frontends')->group(function () {
+    
+    Route::get('/login','AuthController@login_form')->name('login.form');
+    Route::post('/login','AuthController@login')->name('login');
+    Route::get('/register','AuthController@register_form')->name('register.form');
+    Route::post('/register','AuthController@register')->name('register');
 
-Route::middleware('auth')->group(function() {
-    Route::get('/', 'PageController@loadPage')->name('dashboard');
-    Route::get('logout', 'AuthController@logout')->name('logout');
-    Route::get('page/{layout}/{pageName}', 'PageController@loadPage')->name('page');
 });
