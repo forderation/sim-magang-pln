@@ -15,22 +15,29 @@
             </div>
             <div class="block block-rounded">
                 <div class="block-content block-content-full">
-                    <form action="be_forms_elements.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
-                        <div class="row push d-flex justify-content-center">
-                            @if ($errors->any())
-                                <span class="alert alert-warning col-md-12">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </span>
-                            @endif
-                            <div class="col-md-12">
+
+                    <div class="row push d-flex justify-content-center">
+                        @if ($errors->any())
+                        <span class="alert alert-warning col-md-12">
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </span>
+                        @endif
+                        @if (session('status'))
+                        <div class="alert alert-success col-md-12"">
+                            {{ session('status') }}
+                        </div>
+                        @endif
+                        <div class="col-md-12">
+                            <form action="{{route('register')}}" method="POST" class="validatedForm" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label for="example-text-input">Nama Lengkap</label>
                                     <input type="text" class="form-control" name="full_name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input">Nomor Induk</label>
+                                    <label for="example-text-input">Nomor Induk Siswa / Mahasiswa</label>
                                     <input type="number" class="form-control" name="no_induk" required>
                                 </div>
                                 <div class="form-group">
@@ -45,32 +52,52 @@
                                     <label for="example-text-input">Jenis Kelamin</label>
                                     <select class="form-control" id="example-select" name="gender">
                                         <option value="1" selected>laki-laki</option>
-                                        <option value="0">perempuan</option>                                    
+                                        <option value="0">perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-email-input">Email</label>
-                                    <input type="email" class="form-control" id="example-email-input" name="example-email-input" required>
+                                    <input type="email" class="form-control" id="example-email-input" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-password-input">Kata Sandi</label>
-                                    <input type="password" class="form-control" id="password-input" name="example-password-input" required>
+                                    <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-password-input">Konfirmasi Kata Sandi</label>
-                                    <input type="password" class="form-control" id="password-conf" name="example-password-input" required>
+                                    <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
                                 </div>
-                                <a class="btn btn-success text-white">Sudah Punya Akun ?</a>
-                                <button type="submit" class="btn btn-primary float-right">Daftar</button>
-                            </div>
+                                <button type="submit" id="submit-btn" class="btn btn-primary float-right">Daftar</button>
+                            </form>
+                            <a href="{{route('login.form')}}" type="button" class="btn btn-success text-white">Sudah Punya Akun ?</a>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <!-- END Hero -->
+@endsection
+
+
+@section('js_after')
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script>
+    $('#submit-btn').click(function(){
+        jQuery('.validatedForm').validate({
+        rules: {
+            password: {
+                minlength: 5
+            },
+            password_confirm: {
+                minlength: 5,
+                equalTo: "#password"
+            }
+        }
+    })
+    })
+</script>
+
 @endsection

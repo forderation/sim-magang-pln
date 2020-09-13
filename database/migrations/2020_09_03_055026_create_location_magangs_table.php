@@ -16,8 +16,9 @@ class CreateLocationMagangsTable extends Migration
         Schema::create('location_magangs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lokasi');
-            $table->double('latitude');
-            $table->double('longitude');
+            $table->text('alamat');
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->timestamps();
         });
     }

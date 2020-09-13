@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+
+use App\Models\Magang;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -14,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'full_name', 'no_induk', 'jurusan', 'gender', 'email', 'password'
+        'full_name', 'no_induk', 'jurusan', 'sekolah', 'gender', 'email', 'password'
     ];
 
     /**
@@ -34,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function magangs(){
+        return $this->hasMany(Magang::class, 'user_id');
+    }
+    
 }

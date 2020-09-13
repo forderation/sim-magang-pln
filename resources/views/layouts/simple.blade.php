@@ -81,6 +81,7 @@
 
         <!-- OneUI Core JS -->
         <script src="{{ mix('js/oneui.app.js') }}"></script>
+        <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 
         <!-- Laravel Scaffolding JS -->
         <!-- <script src="{{ mix('/js/laravel.app.js') }}"></script> -->

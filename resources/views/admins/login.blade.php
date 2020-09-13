@@ -9,21 +9,21 @@
                 <div class="bg-primary-dark-op">
                     <div class="content content-full text-center py-6">
                         <h1 class="h2 text-white mb-2">Sistem Pengajuan Magang UPT PLN Pasuruan</h1>
-                        <h2 class="h4 font-w400 text-white-75 mb-0">Masukkan Akun Magang</h2>
+                        <h2 class="h4 font-w400 text-white-75 mb-0">Login Admin</h2>
                     </div>
                 </div>
             </div>
             <div class="block block-rounded">
                 <div class="block-content block-content-full">
-                    <form action="{{route('login')}}" method="POST" class="validatedForm" enctype="multipart/form-data">
+                    <form action="{{route('admin.login')}}" method="POST" class="validatedForm" enctype="multipart/form-data">
                         @csrf
                         <div class="row push d-flex justify-content-center">
-                            @if (session('status'))
-                            <div class="alert alert-danger">
-                                {{ session('status') }}
-                            </div>
-                            @endif
                             <div class="col-md-8">
+                                @if (session('status'))
+                                <div class="alert alert-danger">
+                                    {{ session('status') }}
+                                </div>
+                                @endif
                                 <div class="form-group">
                                     <label for="example-email-input">Email</label>
                                     <input type="email" class="form-control" id="example-email-input" name="email" required>
@@ -38,7 +38,6 @@
                                     <label class="custom-control-label" for="example-checkbox-custom1">Ingat saya</label>
                                 </div>
                                 </div>
-                                <a href="{{route('register.form')}}" role="button" class="btn btn-success text-white">Belum Punya Akun ?</a>
                                 <button type="submit" class="btn btn-primary float-right">Masuk</button>
                             </div>
                         </div>
