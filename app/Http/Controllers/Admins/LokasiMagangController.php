@@ -27,4 +27,14 @@ class LokasiMagangController extends Controller
         LocationMagang::create($request->except('_token','method'));
         return redirect()->back()->with('status','Berhasil menambahkan lokasi baru');
     }
+
+    public function edit(Request $request){
+        LocationMagang::where('id',$request->id)->update($request->except('_token','method', 'id'));
+        return redirect()->back()->with('status','Berhasil memperbarui lokasi');
+    }
+
+    public function delete(Request $request){
+        LocationMagang::where('id',$request->id)->delete();
+        return redirect()->back()->with('status','Berhasil menghapus lokasi');
+    }
 }

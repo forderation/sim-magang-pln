@@ -31,6 +31,8 @@ Route::prefix('4dm1n')->namespace('Admins')->group(function () {
         Route::prefix('lokasi-magang')->group(function(){
             Route::get('/','LokasiMagangController@index')->name('lokasi-magang.index');
             Route::post('/','LokasiMagangController@store')->name('lokasi-magang.tambah');
+            Route::post('/edit','LokasiMagangController@edit')->name('lokasi-magang.edit');
+            Route::post('/delete','LokasiMagangController@delete')->name('lokasi-magang.delete');
             
         });
     });
