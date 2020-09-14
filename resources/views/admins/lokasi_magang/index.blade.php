@@ -40,7 +40,8 @@
                                 <th class="text-center" style="width: 40px;">#</th>
                                 <th>Nama Lokasi</th>
                                 <th>Alamat</th>
-                                <th>Jumlah peserta magang saat ini</th>
+                                <th>Jumlah Peserta Aktif</th>
+                                <th>Jumlah Peserta Non-Aktif</th>
                                 <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
@@ -55,7 +56,10 @@
                                     {{$lokasi->alamat}}
                                 </td>
                                 <td>
-                                    {{$lokasi->magangs->count()}}
+                                    {{$peserta_aktif[$loop->index]}}
+                                </td>
+                                <td>
+                                    {{$peserta_non_aktif[$loop->index]}}
                                 </td>
                                 <td>
                                     <button type="button" data-id="{{$lokasi->id}}" data-alamat="{{$lokasi->alamat}}" data-latitude="{{$lokasi->latitude}}" data-longitude="{{$lokasi->longitude}}" data-nama="{{$lokasi->nama_lokasi}}" class="modal-edit-btn btn btn-alt-info btn-sm">Edit</button>

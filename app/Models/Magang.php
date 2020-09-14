@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Magang extends Model
 {
@@ -27,6 +28,8 @@ class Magang extends Model
     }
 
     public function pelaksanaan(){
-        return $this->hasMany(Pelaksanaan::class,'magang_id');
+        return $this->hasOne(Pelaksanaan::class,'magang_id');
     }
+
+    
 }

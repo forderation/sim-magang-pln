@@ -17,13 +17,13 @@
                 <div class="block-content block-content-full">
                     <form action="{{route('login')}}" method="POST" class="validatedForm" enctype="multipart/form-data">
                         @csrf
-                        <div class="row push d-flex justify-content-center">
-                            @if (session('status'))
-                            <div class="alert alert-danger">
-                                {{ session('status') }}
-                            </div>
-                            @endif
+                        <div class="row push d-flex justify-content-center">                           
                             <div class="col-md-8">
+                                @if (session('status'))
+                                <div class="alert alert-danger">
+                                    {{ session('status') }}
+                                </div>
+                                @endif
                                 <div class="form-group">
                                     <label for="example-email-input">Email</label>
                                     <input type="email" class="form-control" id="example-email-input" name="email" required>

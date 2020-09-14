@@ -15,7 +15,6 @@
             </div>
             <div class="block block-rounded">
                 <div class="block-content block-content-full">
-
                     <div class="row push d-flex justify-content-center">
                         @if ($errors->any())
                         <span class="alert alert-warning col-md-12">

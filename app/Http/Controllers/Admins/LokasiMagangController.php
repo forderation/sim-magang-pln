@@ -12,15 +12,25 @@ class LokasiMagangController extends Controller
     protected $view_folder = 'admins.lokasi_magang.';
 
     public function index(){
-        
-        $lokasis = LocationMagang::with(['magangs' => function($query){
-            return $query->with(['pelaksanaan' => function($query){
-                return $query->where('status_magang', 'aktif')->get();
-            }])->get();
+        $peserta_aktif = [];
+        $peserta_non_aktif = [];
+        $lokasis = LocationMagang::with(['magangs.pelaksanaan'])->get();
+        foreach($lokasis as $lokasi){
+            $aktif = 0;
+            $non_aktif = 0;
+            foreach($lokasi->magangs as $magang){
+                if($magang->pelaksanaan != null){
+                    if($magang->pelaksanaan->status_magang == 'aktif'){
+                        $aktif += 1;
+                    }else{
+                        $non_aktif += 1;
+                    }
+                }
+            }
+            array_push($peserta_aktif, $aktif);
+            array_push($peserta_non_aktif, $non_aktif);
         }
-        ])->get();
-
-        return view($this->view_folder.'index', compact('lokasis'));
+        return view($this->view_folder.'index', compact('lokasis', 'peserta_aktif', 'peserta_non_aktif'));
     }
 
     public function store(Request $request){

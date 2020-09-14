@@ -87,7 +87,7 @@
 
                 <!-- Side Navigation -->
                 <div class="content-side content-side-full">
-                    @include('admins.sidebar')
+                    @include('frontends.sidebar')
                 </div>
                 <!-- END Side Navigation -->
             </nav>
@@ -99,15 +99,17 @@
                 <div class="content-header">
                     <!-- Left Section -->
                     <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-sm btn-dual mr-2 d-none d-lg-inline-block" data-toggle="layout" data-action="sidebar_mini_toggle">
-                        <i class="fa fa-fw fa-ellipsis-v"></i>
-                    </button>
+                        <button type="button" class="btn btn-sm btn-dual mr-2 d-none d-lg-inline-block" data-toggle="layout" data-action="sidebar_mini_toggle">
+                            <i class="fa fa-fw fa-ellipsis-v"></i>
+                        </button>
+                        
                     </div>
                     <!-- END Left Section -->
 
                     <!-- Right Section -->
                     <div class="d-flex align-items-center">
                         <!-- User Dropdown -->
+                        <span class="badge badge-warning font-size-sm">Peserta Magang</span>
                         <div class="dropdown d-inline-block ml-2">
                             <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 18px;">
