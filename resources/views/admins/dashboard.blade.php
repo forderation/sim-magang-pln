@@ -95,29 +95,25 @@
                     </button>
                 </div>
             </div>
-            <form action="{{route('lokasi-magang.delete')}}" method="POST">
-                @csrf
-                <div class="block-content font-size-sm">
-                    <p>Persetujuan respon proses pengajuan magang </p>
-                    <div class="row justify-content-center py-md-4">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label >Nama Lokasi</label>
-                                <input type="hidden" name="id" id="persetujuan-id">
-                                <input type="text" class="form-control form-control-alt" id="persetujuan-lokasi">
-                            </div>
-                            <div class="form-group">
-                                <label >Nama Peserta</label>
-                                <input type="text" class="form-control form-control-alt" id="persetujuan-nama">
-                            </div>
+            <div class="block-content font-size-sm">
+                <p>Persetujuan proses pengajuan magang </p>
+                <div class="row justify-content-center py-md-4">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label >Nama Lokasi</label>
+                            <input type="text" class="form-control form-control-alt" id="persetujuan-lokasi" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label >Nama Peserta</label>
+                            <input type="text" class="form-control form-control-alt" id="persetujuan-nama" disabled>
                         </div>
                     </div>
                 </div>
-                <div class="block-content block-content-full text-right border-top">
-                    <a href="" id="btn-stuju" class="btn btn-block btn-success btn-sm">setujui</a>
-                    <a href="" id="btn-tolak" class="btn btn-block btn-danger btn-sm">tolak</a>
-                </div>
-            </form>
+            </div>
+            <div class="block-content block-content-full text-right border-top">
+                <a href="" id="btn-stuju" class="btn btn-block btn-success btn-sm">setujui</a>
+                <a href="" id="btn-tolak" class="btn btn-block btn-danger btn-sm">tolak</a>
+            </div>
         </div>
     </div>
 </div>
@@ -127,7 +123,6 @@
 @section('js_after')
 <script>
      $('.btn-modal-persetujuan').on('click', function() {
-        $('#delete-id').val($(this).data('id'));
         $('#persetujuan-nama').val($(this).data('nama'));
         $('#persetujuan-lokasi').val($(this).data('lokasi'));
         $("#btn-stuju").attr("href", $(this).data('id') + "/setuju");

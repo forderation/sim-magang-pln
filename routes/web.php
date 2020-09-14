@@ -63,8 +63,9 @@ Route::prefix('4dm1n')->namespace('Admins')->group(function () {
         });
 
         Route::prefix('pelaksanaan-magang')->group(function(){
-            Route::get('/','LokasiMagangController@index')->name('pelaksanaan-magang.index');
-            
+            Route::get('/','PelaksanaanMagangController@index')->name('pelaksanaan-magang.index');
+            Route::post('/submit','PelaksanaanMagangController@submit')->name('pelaksanaan-magang.submit');
+            Route::get('/file-pelaksanaan/{id}','PelaksanaanMagangController@getFilePelaksanaan')->name('pelaksanaan-magang.file');
         });
 
         Route::prefix('sertifikat-magang')->group(function(){

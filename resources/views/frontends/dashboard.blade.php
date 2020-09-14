@@ -55,7 +55,13 @@
                                     {{$magang->tanggal_selesai}}
                                 </td>
                                 <td>
-                                    {{$magang->status_pengajuan}}
+                                    @if($magang->status_pengajuan == 'diterima')
+                                        <h3><span class="badge badge-success">{{$magang->status_pengajuan}}</span></h3>
+                                    @elseif($magang->status_pengajuan == 'proses')
+                                        <h3><span class="badge badge-primary">{{$magang->status_pengajuan}}</span></h3>
+                                    @else
+                                        <h3><span class="badge badge-alert">{{$magang->status_pengajuan}}</span></h3>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{route('home.file.proposal',['id_magang' => $magang->id])}}" target="_blank" class="btn btn-info btn-sm">proposal</a>
