@@ -28,6 +28,11 @@ class AuthController extends Controller
         return redirect()->back()->with('status', 'Email atau password salah!');
     }
 
+    public function logout(){
+        Auth::logout();
+        return redirect(route('login'));
+    }
+
     public function register_form(){
         if (!Auth::check()) {
             return view('frontends.register');

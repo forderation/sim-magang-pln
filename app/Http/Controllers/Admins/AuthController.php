@@ -17,6 +17,11 @@ class AuthController extends Controller
         return view('admins.login');
     }
 
+    public function logout(){
+        Auth::guard('admin')->logout();
+        return redirect(route('admin.login'));
+    }
+
     public function login(Request $request)
     {
         if (Auth::guard('admin')->attempt(
