@@ -52,5 +52,24 @@ Route::prefix('4dm1n')->namespace('Admins')->group(function () {
             Route::post('/delete','LokasiMagangController@delete')->name('lokasi-magang.delete');
             
         });
+
+        Route::prefix('peserta-magang')->group(function(){
+            Route::get('/','PesertaMagangController@index')->name('peserta-magang.index');
+            
+        });
+
+        Route::prefix('daftar-akun')->group(function(){
+            Route::get('/','LokasiMagangController@index')->name('daftar-akun.index');
+        });
+
+        Route::prefix('pelaksanaan-magang')->group(function(){
+            Route::get('/','LokasiMagangController@index')->name('pelaksanaan-magang.index');
+            
+        });
+
+        Route::prefix('sertifikat-magang')->group(function(){
+            Route::get('/','LokasiMagangController@index')->name('sertifikat-magang.index');
+            
+        });
     });
 });
