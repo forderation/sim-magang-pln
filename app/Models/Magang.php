@@ -15,7 +15,7 @@ class Magang extends Model
         return $this->belongsTo(LocationMagang::class);
     }
 
-    public function users(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
