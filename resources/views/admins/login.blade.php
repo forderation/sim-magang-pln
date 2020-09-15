@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="block block-rounded">
+            <div class="block block-rounded text-white bg-dark">
                 <div class="block-content block-content-full">
                     <form action="{{route('admin.login')}}" method="POST" class="validatedForm" enctype="multipart/form-data">
                         @csrf
