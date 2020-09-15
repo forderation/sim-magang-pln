@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route peserta magang
 Route::namespace('Frontends')->group(function () {
     Route::get('/login','AuthController@login_form')->name('login.form');
     Route::post('/login','AuthController@login')->name('login');
@@ -35,6 +36,8 @@ Route::namespace('Frontends')->group(function () {
     });
 });
 
+
+// Route admin
 Route::prefix('4dm1n')->namespace('Admins')->group(function () {
     Route::get('/login','AuthController@login_form')->name('admin.login.form');
     Route::post('/login','AuthController@login')->name('admin.login');
@@ -70,8 +73,10 @@ Route::prefix('4dm1n')->namespace('Admins')->group(function () {
         });
 
         Route::prefix('sertifikat-magang')->group(function(){
-            Route::get('/','LokasiMagangController@index')->name('sertifikat-magang.index');
-            
+            Route::get('/','SertifikatController@index')->name('sertifikat-magang.index');
+            Route::post('/submit','SertifikatController@submit')->name('sertifikat-magang.submit');
+            Route::post('/update','SertifikatController@update')->name('sertifikat-magang.update');
+            Route::get('/file-sertifikat/{id}','SertifikatController@getFileSertifikat')->name('sertifikat-magang.file');
         });
     });
 });
