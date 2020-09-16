@@ -7,8 +7,14 @@
     </li>
     <li class="nav-main-item">
         <a class="nav-main-link{{ request()->is('*peserta*') ? ' active' : '' }}" href="{{route('peserta-magang.index')}}">
-            <i class="nav-main-link-icon si si-user"></i>
+            <i class="nav-main-link-icon fa fa-users"></i>
             <span class="nav-main-link-name">Daftar Akun Peserta</span>
+        </a>
+    </li>
+    <li class="nav-main-item">
+        <a class="nav-main-link{{ request()->is('*profil*') ? ' active' : '' }}" href="{{route('admin.profil')}}">
+            <i class="nav-main-link-icon far fa-user-circle"></i>
+            <span class="nav-main-link-name">Profil</span>
         </a>
     </li>
     <li class="nav-main-heading">More</li>

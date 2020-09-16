@@ -13,16 +13,7 @@ class Admin extends Authenticatable
     protected $fillable = [
         'full_name', 'email', 'password'
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
+    
     public function sertifikats(){
         return $this->hasMany(Sertifikat::class, 'admin_id');
     }

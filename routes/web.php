@@ -53,6 +53,10 @@ Route::namespace('Admins')->group(function () {
         Route::middleware('auth:admin')->group(function () {
             Route::get('/index', 'DashboardController@index')->name('admin.index');
 
+            Route::get('/profil', 'ProfilController@index')->name('admin.profil');
+            Route::post('/profil', 'ProfilController@update_profil')->name('admin.profil.update');
+            Route::post('/pass', 'ProfilController@update_password')->name('admin.password.update');
+
             Route::get('/{id}/setuju', 'DashboardController@setujui_proposal')->name('admin.setuju-magang');
             Route::get('/{id}/tolak', 'DashboardController@tolak_proposal')->name('admin.tolak-magang');
 
