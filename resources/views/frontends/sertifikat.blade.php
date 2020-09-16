@@ -28,7 +28,7 @@
 </div>
 @endif
 
-@if($pelaksanaans->isEmpty())
+@if($sertifikats->isEmpty())
 <div class="alert alert-warning">
     Anda belum mendapatkan sertifikat magang
 </div>

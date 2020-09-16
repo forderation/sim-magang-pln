@@ -29,26 +29,26 @@
                         </div>
                         @endif
                         <div class="col-md-12">
-                            <form action="{{route('register')}}" method="POST" class="validatedForm" enctype="multipart/form-data">
+                            <form action="{{route('register')}}" method="POST" class="validatedForm" >
                                 @csrf
                                 <div class="form-group">
-                                    <label for="example-text-input">Nama Lengkap</label>
+                                    <label>Nama Lengkap</label>
                                     <input type="text" class="form-control" name="full_name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input">Nomor Induk Siswa / Mahasiswa</label>
+                                    <label>Nomor Induk Siswa / Mahasiswa</label>
                                     <input type="number" class="form-control" name="no_induk" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input">Jurusan / Program Studi</label>
+                                    <label>Jurusan / Program Studi</label>
                                     <input type="text" class="form-control" name="jurusan" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input">Sekolah / Kampus</label>
+                                    <label>Sekolah / Kampus</label>
                                     <input type="text" class="form-control" name="sekolah" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input">Jenis Kelamin</label>
+                                    <label>Jenis Kelamin</label>
                                     <select class="form-control" id="example-select" name="gender">
                                         <option value="1" selected>laki-laki</option>
                                         <option value="0">perempuan</option>
@@ -59,11 +59,11 @@
                                     <input type="email" class="form-control" id="example-email-input" name="email" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-password-input">Kata Sandi</label>
+                                    <label >Kata Sandi</label>
                                     <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-password-input">Konfirmasi Kata Sandi</label>
+                                    <label >Konfirmasi Kata Sandi</label>
                                     <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
                                 </div>
                                 <button type="submit" id="submit-btn" class="btn btn-primary float-right">Daftar</button>
