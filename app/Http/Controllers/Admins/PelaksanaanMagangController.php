@@ -25,7 +25,13 @@ class PelaksanaanMagangController extends Controller
             'nomor_surat' => 'required|unique:surat_terbits',
         ]);
 
-        $filename_surat = 'pelaksanaan-'.$request->file_surat->getClientOriginalName().'.'.$request->file_surat->extension();
+        if(SuratTerbit::latest()->first() == null){
+            $id_new = 1;
+        }else{
+            $id_new = SuratTerbit::latest()->first()->id + 1;
+        }
+
+        $filename_surat = 'pelaksanaan-'.$id_new.'-'.$request->file_surat->getClientOriginalName().'.'.$request->file_surat->extension();
         $request->file('file_surat')->storeAs('pelaksanaan', $filename_surat);
         
         $surat = SuratTerbit::create([
@@ -54,7 +60,7 @@ class PelaksanaanMagangController extends Controller
 
         if($request->file_surat != null){
             Storage::delete('pelaksanaan\\'.$pelaksanaan->surat_terbit->lokasi_simpan);
-            $filename_surat = 'pelaksanaan-'.$request->file_surat->getClientOriginalName().'.'.$request->file_surat->extension();
+            $filename_surat = 'pelaksanaan-'.$pelaksanaan->surat_terbit->id.'-'.$request->file_surat->getClientOriginalName().'.'.$request->file_surat->extension();
             $request->file('file_surat')->storeAs('pelaksanaan', $filename_surat);
             $pelaksanaan->surat_terbit->update(['lokasi_simpan'=>$filename_surat]);
         }
