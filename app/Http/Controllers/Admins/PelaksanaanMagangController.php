@@ -12,12 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PelaksanaanMagangController extends Controller
 {
-    public function index(){
-        $magangs = Magang::where('status_pengajuan','diterima')->whereNotIn('id',function($query){
-            $query->select('magang_id')->from('pelaksanaans');
-        })->get();
+    public function index(){        
         $pelaksanaans = Pelaksanaan::all();
-        return view('admins.pelaksanaan', compact('magangs','pelaksanaans'));
+        return view('admins.pelaksanaan', compact('pelaksanaans'));
     }
 
     public function submit(Request $request){

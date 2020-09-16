@@ -9,8 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        $magangs = Magang::where('status_pengajuan','proses')->with(['user'])->get();
-        return view('admins.dashboard', compact('magangs'));
+        $pelaksanaans = Magang::where('status_pengajuan','diterima')->whereNotIn('id',function($query){
+            $query->select('magang_id')->from('pelaksanaans');
+        })->get();
+        $proposals = Magang::where('status_pengajuan','proses')->with(['user'])->get();
+        return view('admins.dashboard', compact('pelaksanaans','proposals'));
     }
 
     public function setujui_proposal($id){

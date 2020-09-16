@@ -5,7 +5,7 @@
 <div class="bg-body-light">
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-            <h1 class="flex-sm-fill h3 my-2">Pengajuan Magang</h1>
+            <h1 class="flex-sm-fill h3 my-2">Pelaksanaan</h1>
             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     <li class="breadcrumb-item">App</li>
@@ -13,7 +13,7 @@
                         <a class="link-fx" href="{{route('index')}}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="#">Pengajuan Magang</a>
+                        <a class="link-fx" href="#">Pelaksanaan</a>
                     </li>
                 </ol>
             </nav>
@@ -22,48 +22,62 @@
 </div>
 <!-- END Hero -->
 
+@if (session('status'))
+<div class="alert alert-warning">
+    {{ session('status') }}
+</div>
+@endif
+
+@if($pelaksanaans->isEmpty())
+<div class="alert alert-warning">
+    Anda belum mendapatkan pelaksanaan magang
+</div>
+@endif
+
 <!-- Page Content -->
 <div class="content">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="block">
                 <div class="block-header">
-                    <h3 class="block-title">Daftar Lokasi Magang, anda hanya diperkenankan daftar pada satu lokasi</h3>
+                    <h3 class="block-title">Daftar pelaksanaan magang</h3>
                 </div>
                 <div class="block-content">
-                    @if (session('status'))
-                    <div class="alert alert-warning">
-                        {{ session('status') }}
-                    </div>
-                    @endif
                     <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                         <thead>
                             <tr>
-                                <th class="text-center" style="width: 40px;">#</th>
-                                <th>Nama Lokasi</th>
-                                <th>Alamat</th>
-                                <th>Jumlah peserta magang saat ini</th>
+                                <th>#</th>
+                                <th>Nama</th>
+                                <th>Sekolah</th>
+                                <th>Lokasi</th>
+                                <th>Tanggal Mulai</th>
+                                <th>Tanggal Selesai</th>
+                                <th>Nomor Surat</th>
+                                <th>Status Pelaksanaan</th>
                                 <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($lokasis as $lokasi)
+                            @foreach ($pelaksanaans as $pelaksanaan)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td class="font-w600">
-                                    {{$lokasi->nama_lokasi}}
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    {{$lokasi->alamat}}
+                                <td>{{$pelaksanaan->magang->user->full_name}}</td>
+                                <td>{{$pelaksanaan->magang->user->sekolah}}</td>
+                                <td>{{$pelaksanaan->magang->location_magang->nama_lokasi}}</td>
+                                <td>
+                                    {{$pelaksanaan->magang->tanggal_mulai}}
                                 </td>
                                 <td>
-                                    {{$lokasi->magangs->count()}}
+                                    {{$pelaksanaan->magang->tanggal_selesai}}
                                 </td>
                                 <td>
-                                    <a href="{{route('pengajuan-magang.daftar',['id'=>$lokasi->id])}}" class="btn btn-primary btn-sm"> daftar </a>                                    
-                                    @if($lokasi->latitude != null && $lokasi->longitude != null)
-                                        <a href="{{'https://www.google.com/maps/@'.$lokasi->latitude.','.$lokasi->longitude}}." target="_blank" class="btn btn-info btn-sm"> maps </a>
-                                    @endif
+                                    {{$pelaksanaan->surat_terbit->nomor_surat}}
+                                </td>
+                                <td>
+                                    <h3><span class="badge {{$pelaksanaan->status_magang == 'aktif'? 'badge-success':'badge-warning'}}">{{$pelaksanaan->status_magang}}</span></h3>
+                                </td>
+                                <td>
+                                    <a href="{{route('pelaksanaan-magang.file',['id' => $pelaksanaan->id])}}" target="_blank" class="btn btn-block btn-info btn-sm">surat</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -74,9 +88,7 @@
         </div>
     </div>
 </div>
-<!-- END Page Content -->
 @endsection
 
 @section('js_after')
-
 @endsection

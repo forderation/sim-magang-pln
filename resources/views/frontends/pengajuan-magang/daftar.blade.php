@@ -8,9 +8,15 @@
             <h1 class="flex-sm-fill h3 my-2">Pengajuan Magang</h1>
             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
-                    <li class="breadcrumb-item">App</li>
+                <li class="breadcrumb-item">App</li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="">Dashboard</a>
+                        <a class="link-fx" href="{{route('index')}}">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page">
+                        <a class="link-fx" href="{{route('pengajuan-magang.index')}}">Pengajuan Magang</a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page">
+                        <a class="link-fx" href="#">Pendaftaran Magang</a>
                     </li>
                 </ol>
             </nav>
@@ -70,7 +76,7 @@
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox mb-1">
                                     <input type="checkbox" id="example-checkbox-custom1" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="example-checkbox-custom1">Dengan ini semua persyaratan pengajuan sudah dipenuhi</label>
+                                    <label class="custom-control-label" for="example-checkbox-custom1">Data ini setelah di ajukan tidak bisa dirubah, Dengan ini semua persyaratan pengajuan sudah dipenuhi</label>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -30,6 +30,18 @@ class PengajuanMagangController extends Controller
             return redirect()->back()->with('status', 'Anda tidak diperkenankan mengajukan magang lebih dari satu kali');
         }
 
+        $dateNow = Carbon::now();
+
+        $check_user = Magang::where([
+            ['user_id', '=',$user->id],
+            ['status_pengajuan', '=', 'diterima'],
+            ['tanggal_selesai', '>', $dateNow]
+        ])->get();
+
+        if(!$check_user->isEmpty()){
+            return redirect()->back()->with('status', 'Anda tidak diperkenankan mengajukan magang jika belum selesai');
+        }
+
         $location = LocationMagang::find($id);
         return view($this->view_folder.'daftar', compact('location'));
     }
