@@ -9,7 +9,7 @@ class LocationMagang extends Model
     //
     protected $guarded = [];
 
-    public function magangs(){
-        return $this->hasMany(Magang::class,'location_magang_id');
+    public function divisis(){
+        return $this->hasMany(Divisi::class,'location_magang_id');
     }
 }

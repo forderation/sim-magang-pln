@@ -20,7 +20,7 @@ class DashboardController extends Controller
 
     public function home(){
         $user = Auth::user();
-        $magangs = Magang::where('user_id',$user->id)->with(['location_magang'])->get();
+        $magangs = Magang::where('lead_id',$user->id)->get();
         return view('frontends.dashboard', compact('magangs'));
     }
     
@@ -47,7 +47,7 @@ class DashboardController extends Controller
     }
 
     public function pelaksanaan(){
-        $user = Auth::user();
+        $user = Auth::user()->first();
         $magangs= $user->magangs->pluck('id');
         $pelaksanaans = Pelaksanaan::whereIn('magang_id',$magangs)->get();
         return view('frontends.pelaksanaan', compact('pelaksanaans'));

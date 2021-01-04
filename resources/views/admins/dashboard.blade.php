@@ -49,6 +49,7 @@
                                 <th>Nama</th>
                                 <th>Jurusan</th>
                                 <th>Sekolah</th>
+                                <th>Divisi</th>
                                 <th>Lokasi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Durasi</th>
@@ -61,10 +62,11 @@
                             @foreach ($proposals as $magang)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td>{{$magang->user->full_name}}</td>
-                                <td>{{$magang->user->jurusan}}</td>
-                                <td>{{$magang->user->sekolah}}</td>
-                                <td>{{$magang->location_magang->nama_lokasi}}</td>
+                                <td>{{$magang->leader->full_name}}</td>
+                                <td>{{$magang->leader->jurusan}}</td>
+                                <td>{{$magang->leader->sekolah}}</td>
+                                <td>{{$magang->divisi->nama_divisi}}</td>
+                                <td>{{$magang->divisi->location_magang->nama_lokasi}}</td>
                                 <td>
                                     {{$magang->tanggal_mulai}}
                                 </td>
@@ -79,7 +81,9 @@
                                     <a href="{{route('home.file.sp',['id_magang' => $magang->id])}}" target="_blank" class="btn btn-block btn-primary btn-sm">surat</a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-warning btn-modal-persetujuan btn-sm" data-id="{{$magang->id}}" data-lokasi="{{$magang->location_magang->nama_lokasi}}" data-nama="{{$magang->user->full_name}}">respon</button>
+                                    <button type="button" class="btn btn-warning btn-modal-persetujuan btn-sm" data-id="{{$magang->id}}" 
+                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}"
+                                         data-nama="{{$magang->leader->full_name}}">respon</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -109,6 +113,7 @@
                                 <th>Nama</th>
                                 <th>Jurusan</th>
                                 <th>Sekolah</th>
+                                <th>Divisi</th>
                                 <th>Lokasi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Durasi</th>
@@ -120,10 +125,11 @@
                             @foreach ($pelaksanaans as $magang)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td>{{$magang->user->full_name}}</td>
-                                <td>{{$magang->user->jurusan}}</td>
-                                <td>{{$magang->user->sekolah}}</td>
-                                <td>{{$magang->location_magang->nama_lokasi}}</td>
+                                <td>{{$magang->leader->full_name}}</td>
+                                <td>{{$magang->leader->jurusan}}</td>
+                                <td>{{$magang->leader->sekolah}}</td>
+                                <td>{{$magang->divisi->nama_divisi}}</td>
+                                <td>{{$magang->divisi->location_magang->nama_lokasi}}</td>
                                 <td>
                                     {{$magang->tanggal_mulai}}
                                 </td>
@@ -134,7 +140,9 @@
                                     {{$magang->tanggal_selesai}}
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-warning btn-modal-respon btn-sm" data-id="{{$magang->id}}" data-lokasi="{{$magang->location_magang->nama_lokasi}}" data-nama="{{$magang->user->full_name}}">respon pelaksanaan</button>
+                                    <button type="button" class="btn btn-warning btn-modal-respon btn-sm" data-id="{{$magang->id}}" 
+                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}" 
+                                        data-nama="{{$magang->leader->full_name}}">respon pelaksanaan</button>
                                 </td>
                             </tr>
                             @endforeach

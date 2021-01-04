@@ -42,7 +42,7 @@
                                 <th class="text-center" style="width: 40px;">#</th>
                                 <th>Nama Lokasi</th>
                                 <th>Alamat</th>
-                                <th>Jumlah peserta magang saat ini</th>
+                                <th>Jumlah Divisi</th>
                                 <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
@@ -57,7 +57,7 @@
                                     {{$lokasi->alamat}}
                                 </td>
                                 <td>
-                                    {{$lokasi->magangs->count()}}
+                                    {{$lokasi->divisis->count()}}
                                 </td>
                                 <td>
                                     <a href="{{route('pengajuan-magang.daftar',['id'=>$lokasi->id])}}" class="btn btn-primary btn-sm"> daftar </a>                                    

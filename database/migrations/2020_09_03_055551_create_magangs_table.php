@@ -15,8 +15,8 @@ class CreateMagangsTable extends Migration
     {
         Schema::create('magangs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('location_magang_id');
+            $table->unsignedBigInteger('lead_id');
+            $table->unsignedBigInteger('divisi_id');
             $table->string('surat_pemohon');
             $table->string('proposal');
             $table->integer('jangka_waktu');
@@ -24,8 +24,8 @@ class CreateMagangsTable extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('location_magang_id')->references('id')->on('location_magangs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('lead_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('divisi_id')->references('id')->on('divisis')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

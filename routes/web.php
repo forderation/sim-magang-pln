@@ -36,6 +36,10 @@ Route::namespace('Frontends')->group(function () {
             Route::get('/index', 'PengajuanMagangController@index')->name('pengajuan-magang.index');
             Route::get('/daftar/{id}', 'PengajuanMagangController@daftar')->name('pengajuan-magang.daftar');
             Route::post('/submit', 'PengajuanMagangController@submit')->name('pengajuan-magang.submit');
+
+            // QUERY PELAKSANAAN
+            Route::get('/rangeDate', 'PengajuanMagangController@getRangeDate')->name('pengajuan-magang.range-date');
+            Route::get('/divisi/{id}', 'PengajuanMagangController@getDivisi')->name('pengajuan-magang.divisi');
         });
     });
 });
@@ -65,6 +69,13 @@ Route::namespace('Admins')->group(function () {
                 Route::post('/', 'LokasiMagangController@store')->name('lokasi-magang.tambah');
                 Route::post('/edit', 'LokasiMagangController@edit')->name('lokasi-magang.edit');
                 Route::post('/delete', 'LokasiMagangController@delete')->name('lokasi-magang.delete');
+                
+                Route::prefix('divisi')->group(function () {
+                    Route::get('/{id}', 'DivisiController@index')->name('divisi.index');
+                    Route::post('/', 'DivisiController@store')->name('divisi.tambah');
+                    Route::post('/edit', 'DivisiController@edit')->name('divisi.edit');
+                    Route::post('/delete', 'DivisiController@delete')->name('divisi.delete');
+                });
             });
 
             Route::prefix('peserta-magang')->group(function () {

@@ -28,15 +28,17 @@
                         <h3 class="block-title">Status Magang Anda</h3>
                     </div>
                     <div class="block-content">
-                    <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                    <table class="table table-responsive table-bordered table-striped table-vcenter js-dataTable-full" style="max-width: 100%; overflow-x: scroll;">
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 40px;">#</th>
                                 <th>Lokasi</th>
+                                <th>Divisi</th>
                                 <th>Tanggal Mulai Magang</th>
-                                <th>Durasi</th>
+                                <th>Durasi (Hari)</th>
                                 <th>Tanggal Selesai Magang</th>
                                 <th>Status Pengajuan</th>
+                                <th>Anggota</th>
                                 <th style="width: 25%;">Aksi</th>
                             </tr>
                         </thead>
@@ -44,7 +46,8 @@
                             @foreach ($magangs as $magang)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td>{{$magang->location_magang->nama_lokasi}}</td>
+                                <td>{{$magang->divisi->location_magang->nama_lokasi}}</td>
+                                <td>{{$magang->divisi->nama_divisi}}</td>
                                 <td>
                                     {{$magang->tanggal_mulai}}
                                 </td>
@@ -64,8 +67,15 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('home.file.proposal',['id_magang' => $magang->id])}}" target="_blank" class="btn btn-info btn-sm">proposal</a>
-                                    <a href="{{route('home.file.sp',['id_magang' => $magang->id])}}" target="_blank" class="btn btn-success btn-sm">surat permohonan</a>
+                                    <p>
+                                    @foreach($magang->users->pluck('full_name') as $name)
+                                        <span class="badge badge-info">{{$name}}</span>
+                                    @endforeach
+                                    </p>
+                                </td>
+                                <td>
+                                    <a href="{{route('home.file.proposal',['id_magang' => $magang->id])}}" target="_blank" class="btn btn-info btn-sm btn-block">proposal</a>
+                                    <a href="{{route('home.file.sp',['id_magang' => $magang->id])}}" target="_blank" class="btn btn-success btn-sm btn-block">surat permohonan</a>
                                 </td>
                             </tr>
                             @endforeach

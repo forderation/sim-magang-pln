@@ -15,8 +15,8 @@ class Magang extends Model
         return $this->belongsTo(LocationMagang::class);
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function leader(){
+        return $this->belongsTo(User::class, 'lead_id');
     }
 
     public function pesan_magangs(){
@@ -29,6 +29,14 @@ class Magang extends Model
 
     public function pelaksanaan(){
         return $this->hasOne(Pelaksanaan::class,'magang_id');
+    }
+
+    public function users(){
+        return $this->belongsToMany(User::class, 'groups');
+    }
+
+    public function divisi(){
+        return $this->belongsTo(Divisi::class, 'divisi_id');
     }
 
     

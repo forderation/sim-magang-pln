@@ -5,7 +5,7 @@
 <div class="bg-body-light">
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-            <h1 class="flex-sm-fill h3 my-2">Lokasi Magang</h1>
+            <h1 class="flex-sm-fill h3 my-2">Divisi Lokasi {{$lm->nama_lokasi}}</h1>
             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     <li class="breadcrumb-item">App</li>
@@ -13,7 +13,10 @@
                         <a class="link-fx" href="{{route('admin.index')}}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="#">Lokasi Magang</a>
+                        <a class="link-fx" href="{{route('lokasi-magang.index')}}">Lokasi Magang</a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page">
+                        <a class="link-fx" href="#">Divisi</a>
                     </li>
                 </ol>
             </nav>
@@ -28,8 +31,9 @@
         <div class="col-md-12">
             <div class="block">
                 <div class="block-header">
-                    <h3 class="block-title">Daftar Lokasi Magang</h3>
-                    <button type="button" class="btn btn-alt-primary push" data-toggle="modal" data-target="#modal-block-slideup">Tambah Lokasi</button>
+                    <h3 class="block-title">Daftar Divisi</h3>
+                    <button type="button" class="btn btn-alt-primary push" data-toggle="modal"
+                     data-target="#modal-block-slideup">Tambah Divisi</button>
                 </div>
                 <div class="block-content">
                     @if (session('status'))
@@ -41,29 +45,32 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 40px;">#</th>
-                                <th>Nama Lokasi</th>
-                                <th>Alamat</th>
-                                <th>Jumlah Divisi</th>
+                                <th>Nama Divisi</th>
+                                <th>Maksimal Kelompok</th>
+                                <th>Jumlah Magang Terdaftar</th>
                                 <th style="width: 20%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($lokasis as $lokasi)
+                            @foreach ($divisis as $divisi)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
                                 <td class="font-w600">
-                                    {{$lokasi->nama_lokasi}}
+                                    {{$divisi->nama_divisi}}
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    {{$lokasi->alamat}}
+                                    {{$divisi->maksimal_kelompok}}
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    {{$lokasi->divisis->count()}}
+                                    {{$divisi->magangs->count()}}
                                 </td>
                                 <td>
-                                    <button type="button" data-id="{{$lokasi->id}}" data-alamat="{{$lokasi->alamat}}" data-latitude="{{$lokasi->latitude}}" data-longitude="{{$lokasi->longitude}}" data-nama="{{$lokasi->nama_lokasi}}" class="modal-edit-btn btn btn-alt-info btn-sm">Edit</button>
-                                    <button type="button" class="btn modal-delete-btn btn-alt-danger btn-sm" data-id="{{$lokasi->id}}" data-nama="{{$lokasi->nama_lokasi}}">Hapus</button>
-                                    <a href="{{route('divisi.index',['id'=>$lokasi->id])}}" class="btn btn-alt-primary btn-sm" {{$lokasi->nama_lokasi}}">Divisi</a>
+                                    <button type="button" data-id="{{$divisi->id}}" 
+                                        data-nama="{{$divisi->nama_divisi}}" 
+                                        data-maks="{{$divisi->maksimal_kelompok}}" 
+                                        class="modal-edit-btn btn btn-alt-info btn-sm">Edit</button>
+                                    <button type="button" class="btn modal-delete-btn btn-alt-danger btn-sm"
+                                     data-id="{{$divisi->id}}" data-nama="{{$divisi->nama_divisi}}">Hapus</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -80,33 +87,26 @@
         <div class="modal-content">
             <div class="block block-rounded block-themed block-transparent mb-0">
                 <div class="block-header bg-primary-dark">
-                    <h3 class="block-title">Tambah Lokasi Magang</h3>
+                    <h3 class="block-title">Tambah Divisi Lokasi Magang</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="fa fa-fw fa-times"></i>
                         </button>
                     </div>
                 </div>
-                <form action="{{route('lokasi-magang.tambah')}}" method="POST">
+                <form action="{{route('divisi.tambah')}}" method="POST">
                     @csrf
                     <div class="block-content font-size-sm">
                         <div class="row justify-content-center py-md-4">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label >Nama Lokasi</label>
-                                    <input type="text" class="form-control form-control-alt" name="nama_lokasi" required>
+                                    <label >Nama Divisi</label>
+                                    <input type="hidden" name="location_magang_id" value="{{$lm->id}}" >
+                                    <input type="text" class="form-control form-control-alt" name="nama_divisi" required>
                                 </div>
                                 <div class="form-group">
-                                    <label >Alamat</label>
-                                    <input type="text" class="form-control form-control-alt" name="alamat" required>
-                                </div>
-                                <div class="form-group">
-                                    <label >Latitude</label>
-                                    <input type="number" class="form-control form-control-alt" step="any" name="latitude">
-                                </div>
-                                <div class="form-group">
-                                    <label >Longitude</label>
-                                    <input type="number" class="form-control form-control-alt" step="any" name="longitude">
+                                    <label >Maksimal Kelompok</label>
+                                    <input type="number" class="form-control form-control-alt" name="maksimal_kelompok" required>
                                 </div>
                             </div>
                         </div>
@@ -126,34 +126,28 @@
         <div class="modal-content">
             <div class="block block-rounded block-themed block-transparent mb-0">
                 <div class="block-header bg-primary-dark">
-                    <h3 class="block-title">Edit Lokasi Magang</h3>
+                    <h3 class="block-title">Edit Divisi</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="fa fa-fw fa-times"></i>
                         </button>
                     </div>
                 </div>
-                <form action="{{route('lokasi-magang.edit')}}" method="POST">
+                <form action="{{route('divisi.edit')}}" method="POST">
                     @csrf
                     <div class="block-content font-size-sm">
                         <div class="row justify-content-center py-md-4">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label >Nama Lokasi</label>
-                                    <input type="hidden" name="id" id="edit-id">
-                                    <input type="text" class="form-control form-control-alt" name="nama_lokasi" id="edit-nama" required>
+                            <div class="form-group">
+                            <input type="hidden" name="id" id="edit-id" >
+                                    <label >Nama Divisi</label>
+                                    <input type="text" class="form-control form-control-alt" name="nama_divisi"
+                                    id="edit-nama" required>
                                 </div>
                                 <div class="form-group">
-                                    <label >Alamat</label>
-                                    <input type="text" class="form-control form-control-alt" name="alamat" id="edit-alamat" required>
-                                </div>
-                                <div class="form-group">
-                                    <label >Latitude</label>
-                                    <input type="number" class="form-control form-control-alt" step="any" id="edit-latitude" name="latitude">
-                                </div>
-                                <div class="form-group">
-                                    <label >Longitude</label>
-                                    <input type="number" class="form-control form-control-alt" step="any" id="edit-longitude" name="longitude">
+                                    <label >Maksimal Kelompok</label>
+                                    <input type="number" class="form-control form-control-alt" 
+                                    id="edit-maks" name="maksimal_kelompok" required>
                                 </div>
                             </div>
                         </div>
@@ -173,21 +167,21 @@
         <div class="modal-content">
             <div class="block block-rounded block-themed block-transparent mb-0">
                 <div class="block-header bg-primary-dark">
-                    <h3 class="block-title">Hapus Lokasi Magang</h3>
+                    <h3 class="block-title">Hapus Divisi Magang</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="fa fa-fw fa-times"></i>
                         </button>
                     </div>
                 </div>
-                <form action="{{route('lokasi-magang.delete')}}" method="POST">
+                <form action="{{route('divisi.delete')}}" method="POST">
                     @csrf
                     <div class="block-content font-size-sm">
-                        <p>Apakah anda yakin ingin menghapus lokasi berikut ? </p>
+                        <p>Apakah anda yakin ingin menghapus divisi berikut ? </p>
                         <div class="row justify-content-center py-md-4">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label >Nama Lokasi</label>
+                                    <label >Nama Divisi</label>
                                     <input type="hidden" name="id" id="delete-id">
                                     <input type="text" class="form-control form-control-alt" id="delete-nama">
                                 </div>
@@ -210,17 +204,13 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.modal-edit-btn').on('click', function() {
-
             $('#edit-id').val($(this).data('id'));
-            $('#edit-alamat').val($(this).data('alamat'));
             $('#edit-nama').val($(this).data('nama'));
-            $('#edit-latitude').val($(this).data('latitude'));
-            $('#edit-longitude').val($(this).data('longitude'));
+            $('#edit-maks').val($(this).data('maks'));
             $('#modal-block-edit').modal('show');
         });
 
         $('.modal-delete-btn').on('click', function() {
-
             $('#delete-id').val($(this).data('id'));
             $('#delete-nama').val($(this).data('nama'));
             $('#modal-block-delete').modal('show');

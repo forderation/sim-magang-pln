@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.css') }}">
         <link rel="stylesheet" href="{{ asset('js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css') }}">
         
+        <script src="{{ asset('js/laravel.app.js') }}"></script>
         <link rel="stylesheet" id="css-theme" href="{{ mix('/css/themes/amethyst.css') }}">
         @yield('css_after')
 
