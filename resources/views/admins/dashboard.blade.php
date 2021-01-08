@@ -82,7 +82,7 @@
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-warning btn-modal-persetujuan btn-sm" data-id="{{$magang->id}}" 
-                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}"
+                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}" data-groups="{{$magang->users}}"
                                          data-nama="{{$magang->leader->full_name}}">respon</button>
                                 </td>
                             </tr>
@@ -141,7 +141,7 @@
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-warning btn-modal-respon btn-sm" data-id="{{$magang->id}}" 
-                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}" 
+                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}" data-groups="{{$magang->users()->pluck('full_name')}}"
                                         data-nama="{{$magang->leader->full_name}}">respon pelaksanaan</button>
                                 </td>
                             </tr>
@@ -216,8 +216,12 @@
                                 <input type="text" class="form-control form-control-alt" id="pelaksanaan-lokasi" disabled>
                             </div>
                             <div class="form-group">
-                                <label >Nama Peserta</label>
+                                <label >Nama Koordinator</label>
                                 <input type="text" class="form-control form-control-alt" id="pelaksanaan-nama" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label >Pelaksana</label>
+                                <input type="text" class="form-control form-control-alt" id="pelaksanaan-groups" disabled>
                             </div>
                             <div class="form-group">
                                 <label >Nomor Surat Terbit Pelaksanaan</label>
@@ -257,6 +261,16 @@
         $('#pelaksanaan-id').val($(this).data('id'));
         $('#pelaksanaan-nama').val($(this).data('nama'));
         $('#pelaksanaan-lokasi').val($(this).data('lokasi'));
+        let groups = ''
+        $(this).data('groups').map(function(e){
+            if(groups != ''){
+                groups += ', ' + e;
+            }
+            else{
+                groups += e;
+            }
+        });
+        $('#pelaksanaan-groups').val(groups);
         $('#modal-respon').modal('show');
     });
      $('.btn-modal-persetujuan').on('click', function() {

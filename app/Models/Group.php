@@ -10,4 +10,7 @@ class Group extends Model
     protected $guarded = [];
     public $timestamps = false;
 
+    public function magang(){
+        return $this->belongsTo(Magang::class);
+    }
 }

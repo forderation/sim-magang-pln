@@ -48,10 +48,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama</th>
+                                <th>Koordinator</th>
                                 <th>Jurusan</th>
                                 <th>Sekolah</th>
-                                <th>Lokasi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Durasi</th>
                                 <th>Tanggal Selesai</th>                                
@@ -62,10 +61,9 @@
                             @foreach ($magangs as $magang)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td>{{$magang->user->full_name}}</td>
-                                <td>{{$magang->user->jurusan}}</td>
-                                <td>{{$magang->user->sekolah}}</td>
-                                <td>{{$magang->location_magang->nama_lokasi}}</td>
+                                <td>{{$magang->leader->full_name}}</td>
+                                <td>{{$magang->leader->jurusan}}</td>
+                                <td>{{$magang->leader->sekolah}}</td>
                                 <td>
                                     {{$magang->tanggal_mulai}}
                                 </td>
@@ -76,7 +74,10 @@
                                     {{$magang->tanggal_selesai}}
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-warning btn-modal-respon btn-sm" data-id="{{$magang->id}}" data-lokasi="{{$magang->location_magang->nama_lokasi}}" data-nama="{{$magang->user->full_name}}">respon sertifikat</button>
+                                    <button type="button" class="btn btn-warning btn-modal-respon btn-sm" data-id="{{$magang->id}}"
+                                     data-divisi="{{$magang->divisi->nama_divisi}}" data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}"
+                                     data-groups="{{$magang->users->pluck('full_name')}}"
+                                      data-nama="{{$magang->leader->full_name}}">respon sertifikat</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -164,24 +165,32 @@
                     <div class="row justify-content-center py-md-4">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label >Nama Lokasi</label>
+                                <label>Lokasi</label>
                                 <input type="hidden" name="magang_id" id="pelaksanaan-id">
                                 <input type="text" class="form-control form-control-alt" id="pelaksanaan-lokasi" disabled>
                             </div>
                             <div class="form-group">
-                                <label >Nama Peserta</label>
+                                <label>Divisi</label>
+                                <input type="text" class="form-control form-control-alt" id="pelaksanaan-divisi" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Koordinator</label>
                                 <input type="text" class="form-control form-control-alt" id="pelaksanaan-nama" disabled>
                             </div>
                             <div class="form-group">
-                                <label >Nomor Sertifikat</label>
+                                <label>Pelaksana</label>
+                                <input type="text" class="form-control form-control-alt" id="pelaksanaan-groups" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Nomor Sertifikat</label>
                                 <input type="text" class="form-control form-control-alt" name="nomor_surat" required>
                             </div>
                             <div class="form-group">
-                                <label >Tanggal Terbit</label>
+                                <label>Tanggal Terbit</label>
                                 <input type="date" class="form-control form-control-alt" name="tanggal_terbit" required>
                             </div>
                             <div class="form-group">
-                                <label >Dokumen Sertifikat</label>
+                                <label>Dokumen Sertifikat</label>
                                 <input type="file" name="file_sertifikat" required>
                             </div>
                         </div>
@@ -251,6 +260,18 @@
         $('#pelaksanaan-id').val($(this).data('id'));
         $('#pelaksanaan-nama').val($(this).data('nama'));
         $('#pelaksanaan-lokasi').val($(this).data('lokasi'));
+        $('#pelaksanaan-divisi').val($(this).data('divisi'));
+        let groups = ''
+        $(this).data('groups').map(function(e){
+            if(groups != ''){
+                groups += ', ' + e;
+            }
+            else{
+                groups += e;
+            }
+        });
+        $('#pelaksanaan-groups').val(groups);
+
         $('#modal-respon').modal('show');
     });
 

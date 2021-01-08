@@ -119,16 +119,20 @@
 <script src="{{asset('js/plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
     let firstDate;
+    let toDisable;
+    let seletectedDivisi = $('#divisi_id').find(":selected").val();
 
     let configFlatPick = {
+        minDate: "today",
+        disable: [],
         onChange: function(selectedDates, dateStr, instance) {
-            // console.log(`${selectedDates} : ${dateStr} : ${instance}`);
             if (instance.selectedDates.length >= 1) {
                 firstDate = flatpickr.formatDate(instance.selectedDates[0], "Y/m/d");
+                lastDate = flatpickr.formatDate(instance.selectedDates[1], "Y/m/d");
                 $('#tanggal_mulai').val(firstDate);
+                $('#tanggal_selesai').val(lastDate);
                 let divisi = $("#divisi_id" ).val();
-                let baseDivisiUrl = '{{url("/pengajuan-magang/divisi/")}}';
-                
+                let baseDivisiUrl = '{{url("/pengajuan-magang/divisi/")}}' + divisi;
                 return;
             }
             firstDate = null;
@@ -138,6 +142,17 @@
     $('#example-select2-multiple').select2({
         theme: "classic"
     });
-    $("#example-flatpickr-range").flatpickr(configFlatPick);
+
+    // const flatpickr = $("#example-flatpickr-range").flatpickr(configFlatPick);
+
+    // var date = new Date();
+    // var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    // var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    
+    // $( "#divisi_id" ).change(function() {
+       // $(this).val();
+        // seletectedDivisi = 
+    // });
 </script>
 @endsection

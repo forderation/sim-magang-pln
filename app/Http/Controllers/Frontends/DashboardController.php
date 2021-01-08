@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontends;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
 use App\Models\Magang;
 use App\Models\Pelaksanaan;
 use App\Models\Sertifikat;
@@ -20,7 +21,7 @@ class DashboardController extends Controller
 
     public function home(){
         $user = Auth::user();
-        $magangs = Magang::where('lead_id',$user->id)->get();
+        $magangs = Group::whereHas('magang')->with('magang')->where('user_id', $user->id)->get();
         return view('frontends.dashboard', compact('magangs'));
     }
     

@@ -11,9 +11,9 @@ class Magang extends Model
     //
     protected $guarded = [];
 
-    public function location_magang(){
-        return $this->belongsTo(LocationMagang::class);
-    }
+    // public function location_magang(){
+    //     return $this->belongsTo(LocationMagang::class);
+    // }
 
     public function leader(){
         return $this->belongsTo(User::class, 'lead_id');

@@ -28132,7 +28132,7 @@ var Tools = /*#__PURE__*/function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Muzaki\kerja\sim-magang-new\resources\js\oneui\app.js */"./resources/js/oneui/app.js");
+module.exports = __webpack_require__(/*! C:\Users\USER\Zaki\sim-magang-pln\resources\js\oneui\app.js */"./resources/js/oneui/app.js");
 
 
 /***/ })

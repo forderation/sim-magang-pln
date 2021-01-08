@@ -63,6 +63,7 @@ class PengajuanMagangController extends Controller
             }])->firstOrFail();
             return json_encode($details);
         }
+        return json_encode([]);
     }
 
     public function getDivisi($id){
@@ -106,6 +107,10 @@ class PengajuanMagangController extends Controller
                 'user_id' => $g,
             ]);
         }
+        Group::create([
+            'magang_id' => $magang->id,
+            'user_id' => $user->id,
+        ]);
 
         return redirect(route('pengajuan-magang.index'))->with('status','Pengajuan magang berhasil didaftarkan');
     }

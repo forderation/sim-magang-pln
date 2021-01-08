@@ -45,6 +45,7 @@
                         <tbody>
                             @foreach ($magangs as $magang)
                             <tr>
+                                <?php $magang = $magang->magang ?>
                                 <td class="text-center">{{$loop->iteration}}</td>
                                 <td>{{$magang->divisi->location_magang->nama_lokasi}}</td>
                                 <td>{{$magang->divisi->nama_divisi}}</td>

@@ -49,9 +49,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama</th>
+                                <th>Koordinator</th>
                                 <th>Sekolah</th>
-                                <th>Lokasi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Nomor Surat</th>
@@ -63,9 +62,8 @@
                             @foreach ($pelaksanaans as $pelaksanaan)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td>{{$pelaksanaan->magang->user->full_name}}</td>
-                                <td>{{$pelaksanaan->magang->user->sekolah}}</td>
-                                <td>{{$pelaksanaan->magang->location_magang->nama_lokasi}}</td>
+                                <td>{{$pelaksanaan->magang->leader->full_name}}</td>
+                                <td>{{$pelaksanaan->magang->leader->sekolah}}</td>
                                 <td>
                                     {{$pelaksanaan->magang->tanggal_mulai}}
                                 </td>
@@ -82,7 +80,7 @@
                                     <a href="{{route('pelaksanaan-magang.file',['id' => $pelaksanaan->id])}}" target="_blank" class="btn btn-block btn-info btn-sm">surat</a>
                                     <button type="button" class="btn modal-status-btn btn-warning btn-block btn-sm" data-status="{{$pelaksanaan->status_magang}}"
                                         data-nomor=" {{$pelaksanaan->surat_terbit->nomor_surat}}" data-tanggal="{{$pelaksanaan->surat_terbit->tanggal_terbit}}"
-                                     data-id="{{$pelaksanaan->id}}" data-nama="{{$pelaksanaan->magang->user->full_name}}">edit</button>
+                                     data-id="{{$pelaksanaan->id}}" data-nama="{{$pelaksanaan->magang->leader->full_name}}">edit</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -113,7 +111,7 @@
                     <div class="row justify-content-center py-md-4">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label >Nama Peserta</label>
+                                <label >Nama Koordinator</label>
                                 <input type="hidden" name="id" id="status-pelaksanaan-id">
                                 <input type="text" class="form-control form-control-alt" id="status-pelaksanaan-nama" disabled>
                             </div>

@@ -29,7 +29,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "json-query": "^2.2.2",
-        "@babel/compat-data": "^7.9.0"
+        "@babel/compat-data": "^7.9.0",
+        "json-query": "^2.2.2"
     }
 }
