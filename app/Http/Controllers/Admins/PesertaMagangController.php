@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use Symfony\Component\HttpFoundation\Request;
 
 class PesertaMagangController extends Controller

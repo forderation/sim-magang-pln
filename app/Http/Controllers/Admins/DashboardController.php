@@ -12,7 +12,7 @@ class DashboardController extends Controller
         $pelaksanaans = Magang::where('status_pengajuan','diterima')->whereNotIn('id',function($query){
             $query->select('magang_id')->from('pelaksanaans');
         })->get();
-        $proposals = Magang::where('status_pengajuan','proses')->with(['user'])->get();
+        $proposals = Magang::where('status_pengajuan','proses')->with(['leader', 'users'])->get();
         return view('admins.dashboard', compact('pelaksanaans','proposals'));
     }
 

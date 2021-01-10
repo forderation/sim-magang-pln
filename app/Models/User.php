@@ -1,9 +1,6 @@
 <?php
 
-namespace App;
-
-use App\Models\Group;
-use App\Models\Magang;
+namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -15,7 +12,7 @@ class User extends Authenticatable
     }
 
     public function userGroups(){
-        return $this->belongsTo(Group::class, 'user_id');
+        return $this->hasMany(Group::class, 'user_id');
     }
 
     public function magangs(){

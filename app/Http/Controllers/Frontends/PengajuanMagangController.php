@@ -7,7 +7,7 @@ use App\Models\Divisi;
 use App\Models\Group;
 use App\Models\LocationMagang;
 use App\Models\Magang;
-use App\User;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

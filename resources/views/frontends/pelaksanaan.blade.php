@@ -47,9 +47,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama</th>
-                                <th>Sekolah</th>
+                                <th>Koordinator</th>
                                 <th>Lokasi</th>
+                                <th>Divisi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Nomor Surat</th>
@@ -61,9 +61,9 @@
                             @foreach ($pelaksanaans as $pelaksanaan)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td>{{$pelaksanaan->magang->user->full_name}}</td>
-                                <td>{{$pelaksanaan->magang->user->sekolah}}</td>
-                                <td>{{$pelaksanaan->magang->location_magang->nama_lokasi}}</td>
+                                <td>{{$pelaksanaan->magang->leader->full_name}}</td>
+                                <td>{{$pelaksanaan->magang->divisi->location_magang->nama_lokasi}}</td>
+                                <td>{{$pelaksanaan->magang->divisi->nama_divisi}}</td>
                                 <td>
                                     {{$pelaksanaan->magang->tanggal_mulai}}
                                 </td>
@@ -74,7 +74,7 @@
                                     {{$pelaksanaan->surat_terbit->nomor_surat}}
                                 </td>
                                 <td>
-                                    <h3><span class="badge {{$pelaksanaan->status_magang == 'aktif'? 'badge-success':'badge-warning'}}">{{$pelaksanaan->status_magang}}</span></h3>
+                                    <h3><span class="badge align-middle {{$pelaksanaan->status_magang == 'aktif'? 'badge-success':'badge-warning'}}">{{$pelaksanaan->status_magang}}</span></h3>
                                 </td>
                                 <td>
                                     <a href="{{route('pelaksanaan-magang.file',['id' => $pelaksanaan->id])}}" target="_blank" class="btn btn-block btn-info btn-sm">surat</a>

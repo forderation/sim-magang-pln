@@ -64,8 +64,7 @@
                 <!-- Side Header -->
                 <div class="content-header bg-warning">
                     <!-- Logo -->
-                    <a class="font-w600 text-dual" href="/">
-                        <i class="fa fa-lightbulb text-dark"></i>
+                    <a class="font-w600 text-dual" href="/">                        
                         <span class="smini-hide">
                             <span class="font-w700 font-size-h5 text-dark">Magang-PLN</span>
                         </span>
@@ -150,7 +149,10 @@
             <!-- Main Container -->
             <main id="main-container">
                 @yield('content')
-            </main>
+            </main>                
+            <div class="content content-full font-size-sm text-muted text-center">
+                <strong>Template by OneUI</strong> &copy; <span data-toggle="year-copy"></span>
+            </div>
             <!-- END Main Container -->
 
             <!-- Footer -->

@@ -39,16 +39,6 @@
             <aside id="side-overlay" class="font-size-sm">
                 <!-- Side Header -->
                 <div class="content-header border-bottom">
-                    <!-- User Avatar -->
-                    <a class="img-link mr-1" href="javascript:void(0)">
-                        <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
-                    </a>
-                    <!-- END User Avatar -->
-
-                    <!-- User Info -->
-                    <div class="ml-2">
-                        <a class="link-fx text-dark font-w600" href="javascript:void(0)">Adam McCoy</a>
-                    </div>
                     <!-- END User Info -->
 
                     <!-- Close Side Overlay -->
@@ -66,7 +56,6 @@
                 <div class="content-header bg-warning">
                     <!-- Logo -->
                     <a class="font-w600 text-dual" href="/">
-                        <i class="fa fa-lightbulb text-dark"></i>
                         <span class="smini-hide">
                             <span class="font-w700 font-size-h5 text-dark">Magang-PLN</span>
                         </span>
@@ -153,6 +142,9 @@
             <main id="main-container">
                 @yield('content')
             </main>
+            <div class="content content-full font-size-sm text-muted text-center">
+                <strong>Template by OneUI</strong> &copy; <span data-toggle="year-copy"></span>
+            </div>
             <!-- END Main Container -->
 
             <!-- Footer -->

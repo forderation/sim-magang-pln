@@ -29,8 +29,6 @@ Route::namespace('Frontends')->group(function () {
         Route::post('/profil', 'DashboardController@update_profil')->name('profil.update');
         Route::post('/update-password', 'DashboardController@update_password')->name('password.update');
         Route::get('/home', 'DashboardController@home')->name('home.index');
-        Route::get('/proposal/{id_magang}', 'DashboardController@getFileProposal')->name('home.file.proposal');
-        Route::get('/sp/{id_magang}', 'DashboardController@getFileSP')->name('home.file.sp');
 
         Route::prefix('pengajuan-magang')->group(function () {
             Route::get('/index', 'PengajuanMagangController@index')->name('pengajuan-magang.index');
@@ -42,6 +40,9 @@ Route::namespace('Frontends')->group(function () {
             Route::get('/divisi/{id}', 'PengajuanMagangController@getDivisi')->name('pengajuan-magang.divisi');
         });
     });
+    
+    Route::get('/proposal/{id_magang}', 'DashboardController@getFileProposal')->name('home.file.proposal');
+    Route::get('/sp/{id_magang}', 'DashboardController@getFileSP')->name('home.file.sp');
 });
 
 

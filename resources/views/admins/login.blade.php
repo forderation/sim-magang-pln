@@ -42,6 +42,9 @@
                             </div>
                         </div>
                     </form>
+                </div>                
+                <div class="content content-full font-size-sm text-muted text-center">
+                    <strong>Template by OneUI</strong> &copy; <span data-toggle="year-copy"></span>
                 </div>
             </div>
         </div>

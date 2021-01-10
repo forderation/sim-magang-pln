@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class Magang extends Model
 {
@@ -17,10 +15,6 @@ class Magang extends Model
 
     public function leader(){
         return $this->belongsTo(User::class, 'lead_id');
-    }
-
-    public function pesan_magangs(){
-        return $this->hasMany(PesanMagang::class,'magang_id');
     }
 
     public function sertifikat(){

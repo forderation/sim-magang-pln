@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Models\Pelaksanaan;
 use App\Models\PesanMagang;
@@ -20,10 +20,6 @@ class Admin extends Authenticatable
 
     public function pelaksanaans(){
         return $this->hasMany(Pelaksanaan::class, 'admin_id');
-    }
-
-    public function pesan_magangs(){
-        return $this->hasMany(PesanMagang::class, 'admin_id');
     }
 
 }

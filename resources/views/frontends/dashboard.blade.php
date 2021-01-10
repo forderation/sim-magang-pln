@@ -35,10 +35,10 @@
                                 <th>Lokasi</th>
                                 <th>Divisi</th>
                                 <th>Tanggal Mulai Magang</th>
-                                <th>Durasi (Hari)</th>
                                 <th>Tanggal Selesai Magang</th>
+                                <th>Durasi (Hari)</th>
                                 <th>Status Pengajuan</th>
-                                <th>Anggota</th>
+                                <th>Pelaksana</th>
                                 <th style="width: 25%;">Aksi</th>
                             </tr>
                         </thead>
@@ -53,10 +53,10 @@
                                     {{$magang->tanggal_mulai}}
                                 </td>
                                 <td>
-                                    {{$magang->jangka_waktu}}
+                                    {{$magang->tanggal_selesai}}
                                 </td>
                                 <td>
-                                    {{$magang->tanggal_selesai}}
+                                    {{$magang->jangka_waktu}}
                                 </td>
                                 <td>
                                     @if($magang->status_pengajuan == 'diterima')

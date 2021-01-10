@@ -46,16 +46,15 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama</th>
-                                <th>Jurusan</th>
-                                <th>Sekolah</th>
+                                <th>Nama Koordinator</th>
+                                <th>Pelaksana</th>
+                                <th>Sekolah / Univ</th>
                                 <th>Divisi</th>
                                 <th>Lokasi</th>
                                 <th>Tanggal Mulai</th>
-                                <th>Durasi</th>
                                 <th>Tanggal Selesai</th>                                
-                                <th style="width: 25%;">Detail</th>
-                                <th style="width: 25%;">Respon</th>
+                                <th>Durasi</th>
+                                <th style="width: 30%;">Detail</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,7 +62,11 @@
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
                                 <td>{{$magang->leader->full_name}}</td>
-                                <td>{{$magang->leader->jurusan}}</td>
+                                <td>
+                                    @foreach ($magang->users as $us)
+                                        <span class="badge badge-primary">{{$us->full_name}}</span>
+                                    @endforeach
+                                </td>
                                 <td>{{$magang->leader->sekolah}}</td>
                                 <td>{{$magang->divisi->nama_divisi}}</td>
                                 <td>{{$magang->divisi->location_magang->nama_lokasi}}</td>
@@ -71,18 +74,17 @@
                                     {{$magang->tanggal_mulai}}
                                 </td>
                                 <td>
-                                    {{$magang->jangka_waktu}}
+                                    {{$magang->tanggal_selesai}}
                                 </td>
                                 <td>
-                                    {{$magang->tanggal_selesai}}
+                                    {{$magang->jangka_waktu}}
                                 </td>
                                 <td>
                                     <a href="{{route('home.file.proposal',['id_magang' => $magang->id])}}" target="_blank" class="btn btn-block btn-info btn-sm">proposal</a>
                                     <a href="{{route('home.file.sp',['id_magang' => $magang->id])}}" target="_blank" class="btn btn-block btn-primary btn-sm">surat</a>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-warning btn-modal-persetujuan btn-sm" data-id="{{$magang->id}}" 
-                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}" data-groups="{{$magang->users}}"
+                                    <button type="button" class="btn btn-block btn-warning btn-modal-persetujuan btn-sm" data-id="{{$magang->id}}" 
+                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}"
+                                        data-groups="{{$magang->users->pluck('full_name')}}"
                                          data-nama="{{$magang->leader->full_name}}">respon</button>
                                 </td>
                             </tr>
@@ -141,7 +143,8 @@
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-warning btn-modal-respon btn-sm" data-id="{{$magang->id}}" 
-                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}" data-groups="{{$magang->users()->pluck('full_name')}}"
+                                        data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}" 
+                                        data-groups="{{$magang->users->pluck('full_name')}}"
                                         data-nama="{{$magang->leader->full_name}}">respon pelaksanaan</button>
                                 </td>
                             </tr>
@@ -175,8 +178,12 @@
                             <input type="text" class="form-control form-control-alt" id="persetujuan-lokasi" disabled>
                         </div>
                         <div class="form-group">
-                            <label >Nama Peserta</label>
+                            <label >Nama Koordinator</label>
                             <input type="text" class="form-control form-control-alt" id="persetujuan-nama" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label >Anggota</label>
+                            <input type="text" class="form-control form-control-alt" id="persetujuan-groups" disabled>
                         </div>
                     </div>
                 </div>
@@ -275,6 +282,16 @@
     });
      $('.btn-modal-persetujuan').on('click', function() {
         $('#persetujuan-nama').val($(this).data('nama'));
+        let groups = ''
+        $(this).data('groups').map(function(e){
+            if(groups != ''){
+                groups += ', ' + e;
+            }
+            else{
+                groups += e;
+            }
+        });
+        $('#persetujuan-groups').val(groups);
         $('#persetujuan-lokasi').val($(this).data('lokasi'));
         $("#btn-stuju").attr("href", $(this).data('id') + "/setuju");
         $("#btn-tolak").attr("href", $(this).data('id') + "/tolak");

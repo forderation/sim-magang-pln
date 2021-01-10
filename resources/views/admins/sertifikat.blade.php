@@ -89,7 +89,7 @@
     </div>
 </div>
 
-
+{{-- SERTIFIKAT MAGANG --}}
 <!-- Page Content -->
 <div class="content">
     <div class="row justify-content-center">
@@ -103,9 +103,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama</th>
-                                <th>Sekolah</th>
+                                <th>Nama Koordinator</th>
                                 <th>Lokasi</th>
+                                <th>Divisi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Nomor Sertifikat</th>
@@ -116,9 +116,9 @@
                             @foreach ($sertifikats as $sertifikat)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td>{{$sertifikat->magang->user->full_name}}</td>
-                                <td>{{$sertifikat->magang->user->sekolah}}</td>
-                                <td>{{$sertifikat->magang->location_magang->nama_lokasi}}</td>
+                                <td>{{$sertifikat->magang->leader->full_name}}</td>
+                                <td>{{$sertifikat->magang->divisi->location_magang->nama_lokasi}}</td>
+                                <td>{{$sertifikat->magang->divisi->nama_divisi}}</td>
                                 <td>
                                     {{$sertifikat->magang->tanggal_mulai}}
                                 </td>
@@ -129,11 +129,11 @@
                                     {{$sertifikat->surat_terbit->nomor_surat}}
                                 </td>
                                 <td>
-                                    <a href="{{route('sertifikat-magang.file',['id' => $sertifikat->id])}}" target="_blank" class="btn btn-block btn-info btn-sm">sertifikat</a>
-                                    
+                                    <a href="{{route('sertifikat-magang.file',['id' => $sertifikat->id])}}"
+                                    target="_blank" class="btn btn-block btn-info btn-sm">sertifikat</a>
                                     <button type="button" class="btn modal-status-btn btn-warning btn-block btn-sm"
                                     data-nomor=" {{$sertifikat->surat_terbit->nomor_surat}}" data-tanggal="{{$sertifikat->surat_terbit->tanggal_terbit}}"
-                                     data-id="{{$sertifikat->id}}" data-nama="{{$sertifikat->magang->user->full_name}}">edit</button>
+                                     data-id="{{$sertifikat->id}}" data-nama="{{$sertifikat->magang->leader->full_name}}">edit</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -221,11 +221,11 @@
             <form action="{{route('sertifikat-magang.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="block-content font-size-sm">
-                    <p>Edit status pelaksanaan </p>
+                    <p class="font-weight-bold">Edit Sertifikat Magang</p>
                     <div class="row justify-content-center py-md-4">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label >Nama Peserta</label>
+                                <label >Nama Koordinator</label>
                                 <input type="hidden" name="id" id="sertifikat-id">
                                 <input type="text" class="form-control form-control-alt" id="sertifikat-nama" disabled>
                             </div>

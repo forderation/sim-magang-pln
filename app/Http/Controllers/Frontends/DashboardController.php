@@ -42,14 +42,16 @@ class DashboardController extends Controller
 
     public function sertifikat(){
         $user = Auth::user();
-        $magangs= $user->magangs->pluck('id');
+        $userGroups = $user->userGroups;
+        $magangs= $userGroups == null ? [] : $userGroups->pluck('magang_id');
         $sertifikats = Sertifikat::whereIn('magang_id',$magangs)->get();
         return view('frontends.sertifikat', compact('sertifikats'));
     }
 
     public function pelaksanaan(){
-        $user = Auth::user()->first();
-        $magangs= $user->magangs->pluck('id');
+        $user = Auth::user();
+        $userGroups = $user->userGroups;
+        $magangs= $userGroups == null ? [] : $userGroups->pluck('magang_id');
         $pelaksanaans = Pelaksanaan::whereIn('magang_id',$magangs)->get();
         return view('frontends.pelaksanaan', compact('pelaksanaans'));
     }

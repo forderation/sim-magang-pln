@@ -143,7 +143,7 @@
         theme: "classic"
     });
 
-    // const flatpickr = $("#example-flatpickr-range").flatpickr(configFlatPick);
+    const flatpickr = $("#example-flatpickr-range").flatpickr(configFlatPick);
 
     // var date = new Date();
     // var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);

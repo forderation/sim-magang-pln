@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\Magang;
 use App\Models\Pelaksanaan;
 use App\Models\SuratTerbit;
 use Illuminate\Support\Facades\Auth;
