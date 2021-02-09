@@ -208,23 +208,20 @@
 
 @section('js_after')
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.modal-edit-btn').on('click', function() {
 
-            $('#edit-id').val($(this).data('id'));
-            $('#edit-alamat').val($(this).data('alamat'));
-            $('#edit-nama').val($(this).data('nama'));
-            $('#edit-latitude').val($(this).data('latitude'));
-            $('#edit-longitude').val($(this).data('longitude'));
-            $('#modal-block-edit').modal('show');
-        });
+    $('.modal-edit-btn').on('click', function() {
+        $('#edit-id').val($(this).data('id'));
+        $('#edit-alamat').val($(this).data('alamat'));
+        $('#edit-nama').val($(this).data('nama'));
+        $('#edit-latitude').val($(this).data('latitude'));
+        $('#edit-longitude').val($(this).data('longitude'));
+        $('#modal-block-edit').modal('show');
+    });
 
-        $('.modal-delete-btn').on('click', function() {
-
-            $('#delete-id').val($(this).data('id'));
-            $('#delete-nama').val($(this).data('nama'));
-            $('#modal-block-delete').modal('show');
-        });
+    $('.modal-delete-btn').on('click', function() {
+        $('#delete-id').val($(this).data('id'));
+        $('#delete-nama').val($(this).data('nama'));
+        $('#modal-block-delete').modal('show');
     });
 </script>
 <script>
