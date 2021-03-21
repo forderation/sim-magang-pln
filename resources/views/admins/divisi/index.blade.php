@@ -5,7 +5,7 @@
 <div class="bg-body-light">
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-            <h1 class="flex-sm-fill h3 my-2">Divisi Lokasi {{$lm->nama_lokasi}}</h1>
+            <h1 class="flex-sm-fill h3 my-2">Lokasi bagian {{$lm->nama_lokasi}}</h1>
             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     <li class="breadcrumb-item">App</li>
@@ -16,7 +16,7 @@
                         <a class="link-fx" href="{{route('lokasi-magang.index')}}">Lokasi Magang</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="#">Divisi</a>
+                        <a class="link-fx" href="#">Bagian</a>
                     </li>
                 </ol>
             </nav>
@@ -31,9 +31,9 @@
         <div class="col-md-12">
             <div class="block">
                 <div class="block-header">
-                    <h3 class="block-title">Daftar Divisi</h3>
+                    <h3 class="block-title">Daftar Bagian</h3>
                     <button type="button" class="btn btn-alt-primary push" data-toggle="modal"
-                     data-target="#modal-block-slideup">Tambah Divisi</button>
+                     data-target="#modal-block-slideup">Tambah Bagian</button>
                 </div>
                 <div class="block-content">
                     @if (session('status'))
@@ -45,7 +45,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 40px;">#</th>
-                                <th>Nama Divisi</th>
+                                <th>Nama Bagian</th>
                                 <th>Maksimal Kelompok</th>
                                 <th>Jumlah Magang Terdaftar</th>
                                 <th style="width: 20%;">Aksi</th>
@@ -87,7 +87,7 @@
         <div class="modal-content">
             <div class="block block-rounded block-themed block-transparent mb-0">
                 <div class="block-header bg-primary-dark">
-                    <h3 class="block-title">Tambah Divisi Lokasi Magang</h3>
+                    <h3 class="block-title">Tambah Bagian Lokasi Magang</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="fa fa-fw fa-times"></i>
@@ -100,7 +100,7 @@
                         <div class="row justify-content-center py-md-4">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label >Nama Divisi</label>
+                                    <label >Nama Bagian</label>
                                     <input type="hidden" name="location_magang_id" value="{{$lm->id}}" >
                                     <input type="text" class="form-control form-control-alt" name="nama_divisi" required>
                                 </div>
@@ -126,7 +126,7 @@
         <div class="modal-content">
             <div class="block block-rounded block-themed block-transparent mb-0">
                 <div class="block-header bg-primary-dark">
-                    <h3 class="block-title">Edit Divisi</h3>
+                    <h3 class="block-title">Edit Bagian</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="fa fa-fw fa-times"></i>
@@ -140,7 +140,7 @@
                             <div class="col-md-12">
                             <div class="form-group">
                             <input type="hidden" name="id" id="edit-id" >
-                                    <label >Nama Divisi</label>
+                                    <label >Nama Bagian</label>
                                     <input type="text" class="form-control form-control-alt" name="nama_divisi"
                                     id="edit-nama" required>
                                 </div>
@@ -167,7 +167,7 @@
         <div class="modal-content">
             <div class="block block-rounded block-themed block-transparent mb-0">
                 <div class="block-header bg-primary-dark">
-                    <h3 class="block-title">Hapus Divisi Magang</h3>
+                    <h3 class="block-title">Hapus Bagian Magang</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="fa fa-fw fa-times"></i>
@@ -177,11 +177,11 @@
                 <form action="{{route('divisi.delete')}}" method="POST">
                     @csrf
                     <div class="block-content font-size-sm">
-                        <p>Apakah anda yakin ingin menghapus divisi berikut ? </p>
+                        <p>Apakah anda yakin ingin menghapus bagian berikut ? </p>
                         <div class="row justify-content-center py-md-4">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label >Nama Divisi</label>
+                                    <label >Nama Bagian</label>
                                     <input type="hidden" name="id" id="delete-id">
                                     <input type="text" class="form-control form-control-alt" id="delete-nama">
                                 </div>

@@ -43,7 +43,7 @@
                                 <th class="text-center" style="width: 40px;">#</th>
                                 <th>Nama Lokasi</th>
                                 <th>Alamat</th>
-                                <th>Jumlah Divisi</th>
+                                <th>Jumlah Bagian</th>
                                 <th style="width: 20%;">Aksi</th>
                             </tr>
                         </thead>
@@ -63,7 +63,7 @@
                                 <td>
                                     <button type="button" data-id="{{$lokasi->id}}" data-alamat="{{$lokasi->alamat}}" data-latitude="{{$lokasi->latitude}}" data-longitude="{{$lokasi->longitude}}" data-nama="{{$lokasi->nama_lokasi}}" class="modal-edit-btn btn btn-alt-info btn-sm">Edit</button>
                                     <button type="button" class="btn modal-delete-btn btn-alt-danger btn-sm" data-id="{{$lokasi->id}}" data-nama="{{$lokasi->nama_lokasi}}">Hapus</button>
-                                    <a href="{{route('divisi.index',['id'=>$lokasi->id])}}" class="btn btn-alt-primary btn-sm" {{$lokasi->nama_lokasi}}">Divisi</a>
+                                    <a href="{{route('divisi.index',['id'=>$lokasi->id])}}" class="btn btn-alt-primary btn-sm" {{$lokasi->nama_lokasi}}">Bagian</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -33,7 +33,7 @@
     <li class="nav-main-item open">
         <a class="nav-main-link{{ request()->is('*sertifikat-magang*') ? ' active' : '' }}" href="{{route('sertifikat-magang.index')}}">
             <i class="nav-main-link-icon fa fa-file-signature"></i>
-            <span class="nav-main-link-name">Sertifikat</span>
+            <span class="nav-main-link-name">Surat Keterangan Magang</span>
         </a>
     </li>
 </ul>

@@ -5,7 +5,7 @@
 <div class="bg-body-light">
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-            <h1 class="flex-sm-fill h3 my-2">Sertifikat</h1>
+            <h1 class="flex-sm-fill h3 my-2">Surat Keterangan</h1>
             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     <li class="breadcrumb-item">App</li>
@@ -13,7 +13,7 @@
                         <a class="link-fx" href="{{route('admin.index')}}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="#">Sertifikat</a>
+                        <a class="link-fx" href="#">Surat Keterangan</a>
                     </li>
                 </ol>
             </nav>
@@ -41,7 +41,7 @@
         <div class="col-md-12">
             <div class="block">
                 <div class="block-header">
-                    <h3 class="block-title">Daftar peserta magang sudah selesai namun <strong>belum mendapat sertifikat</strong></h3>
+                    <h3 class="block-title">Daftar peserta magang sudah selesai namun <strong>belum mendapat surat keterangan</strong></h3>
                 </div>
                 <div class="block-content">
                     <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
@@ -77,7 +77,7 @@
                                     <button type="button" class="btn btn-warning btn-modal-respon btn-sm" data-id="{{$magang->id}}"
                                      data-divisi="{{$magang->divisi->nama_divisi}}" data-lokasi="{{$magang->divisi->location_magang->nama_lokasi}}"
                                      data-groups="{{$magang->users->pluck('full_name')}}"
-                                      data-nama="{{$magang->leader->full_name}}">respon sertifikat</button>
+                                      data-nama="{{$magang->leader->full_name}}">respon surat keterangan</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -96,7 +96,7 @@
         <div class="col-md-12">
             <div class="block">
                 <div class="block-header">
-                    <h3 class="block-title">Daftar peserta mendapatkan sertifikat</h3>
+                    <h3 class="block-title">Daftar peserta mendapatkan surat keterangan</h3>
                 </div>
                 <div class="block-content">
                     <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
@@ -108,7 +108,7 @@
                                 <th>Divisi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
-                                <th>Nomor Sertifikat</th>
+                                <th>Nomor surat keterangan</th>
                                 <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
@@ -221,7 +221,7 @@
             <form action="{{route('sertifikat-magang.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="block-content font-size-sm">
-                    <p class="font-weight-bold">Edit Sertifikat Magang</p>
+                    <p class="font-weight-bold">Edit surat keterangan magang</p>
                     <div class="row justify-content-center py-md-4">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -238,7 +238,7 @@
                                 <input type="date" class="form-control form-control-alt" name="tanggal_terbit" id="status-tanggal" required>
                             </div>
                             <div class="form-group">
-                                <label >Update Dokumen Sertifikat</label>
+                                <label >Update dokumen surat keterangan</label>
                                 <input type="file" name="file_sertifikat">
                             </div>
                         </div>

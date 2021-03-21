@@ -115,7 +115,7 @@
                                 <th>Nama</th>
                                 <th>Jurusan</th>
                                 <th>Sekolah</th>
-                                <th>Divisi</th>
+                                <th>Bagian</th>
                                 <th>Lokasi</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Durasi</th>

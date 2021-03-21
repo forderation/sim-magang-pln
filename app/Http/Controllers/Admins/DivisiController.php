@@ -29,5 +29,4 @@ class DivisiController extends Controller
         Divisi::where('id',$request->id)->delete();
         return redirect()->back()->with('status','Berhasil menghapus divisi');
     }
-
 }

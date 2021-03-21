@@ -33,7 +33,7 @@
                             <tr>
                                 <th class="text-center" style="width: 40px;">#</th>
                                 <th>Lokasi</th>
-                                <th>Divisi</th>
+                                <th>Bagian</th>
                                 <th>Tanggal Mulai Magang</th>
                                 <th>Tanggal Selesai Magang</th>
                                 <th>Durasi (Hari)</th>

@@ -42,7 +42,7 @@
                                 <th class="text-center" style="width: 40px;">#</th>
                                 <th>Nama Lokasi</th>
                                 <th>Alamat</th>
-                                <th>Jumlah Divisi</th>
+                                <th>Jumlah Bagian</th>
                                 <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>

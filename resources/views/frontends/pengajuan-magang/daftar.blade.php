@@ -70,7 +70,7 @@
                             <input type="file" name="proposal">
                         </div>
                         <div class="form-group">
-                            <label class="d-block">Divisi</label>
+                            <label class="d-block">Bagian</label>
                             <select class="form-control" id="divisi_id" name="divisi_id">
                                 @foreach($divisis as $d)
                                 <option value="{{$d->id}}">{{$d->nama_divisi}}</option>

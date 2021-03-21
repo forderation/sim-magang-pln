@@ -49,7 +49,7 @@
                                 <th>#</th>
                                 <th>Koordinator</th>
                                 <th>Lokasi</th>
-                                <th>Divisi</th>
+                                <th>Bagian</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Nomor Surat</th>

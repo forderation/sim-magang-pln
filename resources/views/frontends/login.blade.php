@@ -8,7 +8,7 @@
             <div class="bg-image" style="background-image: url({{asset('media/photos/background-pln.jpg')}});">
                 <div class="bg-primary-dark-op">
                     <div class="content content-full text-center py-6">
-                        <h1 class="h2 text-white mb-2">Sistem Pengajuan Magang UPT PLN Pasuruan</h1>
+                        <h1 class="h2 text-white mb-2">Sistem Pengajuan Magang PLN Pasuruan</h1>
                         <h2 class="h4 font-w400 text-white-75 mb-0">Masukkan Akun Magang</h2>
                     </div>
                 </div>
