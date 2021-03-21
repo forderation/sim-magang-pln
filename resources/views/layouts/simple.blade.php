@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Simagang - UPT PLN Pasuruan</title>
+        <title>Sistem Pengajuan Magang - PLN Pasuruan</title>
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
